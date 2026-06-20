@@ -24,7 +24,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "test": "mocha ./test/**/*.test.js --timeout 20000 --reporter Mochawesome"
+    "test": "mocha ./test/**/*.test.js --timeout 20000 --reporter mochawesome --reporter-options reportDir=reports,reportFilename=report"
   },
   "keywords": [],
   "author": "",
@@ -32,7 +32,13 @@
   "type": "commonjs",
   "dependencies": {
     "chai": "^6.2.2",
+    "dotenv": "^17.4.2",
     "mocha": "^11.7.6",
     "supertest": "^7.2.2"
+  },
+  "devDependencies": {
+    "mochawesome": "^7.1.4",
+    "mochawesome-merge": "^5.1.1",
+    "mochawesome-report-generator": "^6.3.2"
   }
 }

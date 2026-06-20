@@ -5,9 +5,9 @@
     "passes": 3,
     "pending": 0,
     "failures": 0,
-    "start": "2026-06-20T20:26:39.531Z",
-    "end": "2026-06-20T20:26:39.595Z",
-    "duration": 64,
+    "start": "2026-06-20T20:50:44.595Z",
+    "end": "2026-06-20T20:50:44.709Z",
+    "duration": 114,
     "testsRegistered": 3,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "44d1391a-7570-4366-9e02-30e18f4ea835",
+      "uuid": "85af5a1f-2872-4a26-b887-084febf26e51",
       "title": "",
       "fullFile": "",
       "file": "",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "9b19dbee-2e00-4de3-bd40-d3ff2f4ef401",
+          "uuid": "b6c7874b-9b6f-45a6-bd53-4ac1452eab32",
           "title": "Login",
           "fullFile": "C:\\QAx\\JuliodeLima\\Projetos\\banco-api-tests\\test\\login.test.js",
           "file": "\\test\\login.test.js",
@@ -36,7 +36,7 @@
           "tests": [],
           "suites": [
             {
-              "uuid": "15676609-78dc-4c63-bd74-769c5c6661d5",
+              "uuid": "425fd215-de83-40fd-8664-efbcab0deb79",
               "title": "POST /login",
               "fullFile": "C:\\QAx\\JuliodeLima\\Projetos\\banco-api-tests\\test\\login.test.js",
               "file": "\\test\\login.test.js",
@@ -47,29 +47,29 @@
                   "title": "Deve autenticar o usuário com credenciais válidas",
                   "fullTitle": "Login POST /login Deve autenticar o usuário com credenciais válidas",
                   "timedOut": false,
-                  "duration": 25,
+                  "duration": 55,
                   "state": "passed",
-                  "speed": "fast",
+                  "speed": "medium",
                   "pass": true,
                   "fail": false,
                   "pending": false,
                   "context": null,
-                  "code": "const response = await request('http://localhost:3000')\n  .post('/login')\n  .set('Content-Type', 'application/json')\n  .send({ username: 'julio.lima', senha: '123456' });\n// Test implementation\n//console.log('Response Body:', response.body); // Log the response body for debugging\n//console.log('Response Status:', response.status); // Log the response status for debugging\nexpect(response.status).to.equal(200);\nexpect(response.body.token).to.be.a('string');",
+                  "code": "const response = await request(process.env.BASE_URL)\n  .post('/login')\n  .set('Content-Type', 'application/json')\n  .send({ username: 'julio.lima', senha: '123456' });\n// Test implementation\n//console.log('Response Body:', response.body); // Log the response body for debugging\n//console.log('Response Status:', response.status); // Log the response status for debugging\nexpect(response.status).to.equal(200);\nexpect(response.body.token).to.be.a('string');",
                   "err": {},
-                  "uuid": "9ddad99f-17d9-4319-9f46-23c3b79fbdf7",
-                  "parentUUID": "15676609-78dc-4c63-bd74-769c5c6661d5",
+                  "uuid": "2eefdce8-58ef-4e11-9384-037355ca8c47",
+                  "parentUUID": "425fd215-de83-40fd-8664-efbcab0deb79",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "9ddad99f-17d9-4319-9f46-23c3b79fbdf7"
+                "2eefdce8-58ef-4e11-9384-037355ca8c47"
               ],
               "failures": [],
               "pending": [],
               "skipped": [],
-              "duration": 25,
+              "duration": 55,
               "root": false,
               "rootEmpty": false,
               "_timeout": 20000
@@ -85,7 +85,7 @@
           "_timeout": 20000
         },
         {
-          "uuid": "40da04a9-ec71-49aa-9a9c-42e4c44f3b81",
+          "uuid": "814b7009-0f79-49fc-a7a0-2b563a246b8e",
           "title": "Transferencias",
           "fullFile": "C:\\QAx\\JuliodeLima\\Projetos\\banco-api-tests\\test\\transferencia.test.js",
           "file": "\\test\\transferencia.test.js",
@@ -94,7 +94,7 @@
           "tests": [],
           "suites": [
             {
-              "uuid": "fee8cb52-1ca8-44aa-98db-74fbabaff913",
+              "uuid": "e170311c-35cf-48ad-b22a-06ee22d447d4",
               "title": "POST /transferencias",
               "fullFile": "C:\\QAx\\JuliodeLima\\Projetos\\banco-api-tests\\test\\transferencia.test.js",
               "file": "\\test\\transferencia.test.js",
@@ -105,7 +105,7 @@
                   "title": "Deve retornar sucesso com 201 quando o valor da transferencia for igual ou acima de R$ 10,00.",
                   "fullTitle": "Transferencias POST /transferencias Deve retornar sucesso com 201 quando o valor da transferencia for igual ou acima de R$ 10,00.",
                   "timedOut": false,
-                  "duration": 18,
+                  "duration": 28,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -114,8 +114,8 @@
                   "context": null,
                   "code": "// Capturar o token de autenticação do usuário logado\nconst responseLogin = await request('http://localhost:3000')\n  .post('/login')\n  .set('Content-Type', 'application/json')\n  .send({\n    username: 'julio.lima',\n    senha: '123456',\n  });\nconst token = responseLogin.body.token;\nconst response = await request('http://localhost:3000')\n  .post('/transferencias')\n  .set('Content-Type', 'application/json')\n  .set('Authorization', `Bearer ${token}`) // Adiciona o token de autenticação no cabeçalho\n  .send({\n    contaOrigem: 1,\n    contaDestino: 2,\n    valor: 11,\n    token: '',\n  });\nexpect(response.status).to.equal(201);",
                   "err": {},
-                  "uuid": "5f2a4a41-379c-495f-a38e-cebb2df45608",
-                  "parentUUID": "fee8cb52-1ca8-44aa-98db-74fbabaff913",
+                  "uuid": "8849d350-e9a2-4881-be5a-d27f2646f8c1",
+                  "parentUUID": "e170311c-35cf-48ad-b22a-06ee22d447d4",
                   "isHook": false,
                   "skipped": false
                 },
@@ -123,7 +123,7 @@
                   "title": "Deve retornar falha com 422 quando o valor da transferencia for abaixo de R$ 10,00.",
                   "fullTitle": "Transferencias POST /transferencias Deve retornar falha com 422 quando o valor da transferencia for abaixo de R$ 10,00.",
                   "timedOut": false,
-                  "duration": 7,
+                  "duration": 14,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -132,21 +132,21 @@
                   "context": null,
                   "code": "// Capturar o token de autenticação do usuário logado\nconst responseLogin = await request('http://localhost:3000')\n  .post('/login')\n  .set('Content-Type', 'application/json')\n  .send({\n    username: 'julio.lima',\n    senha: '123456',\n  });\nconst token = responseLogin.body.token;\nconst response = await request('http://localhost:3000')\n  .post('/transferencias')\n  .set('Content-Type', 'application/json')\n  .set('Authorization', `Bearer ${token}`) // Adiciona o token de autenticação no cabeçalho\n  .send({\n    contaOrigem: 1,\n    contaDestino: 2,\n    valor: 7,\n    token: '',\n  });\nexpect(response.status).to.equal(422);",
                   "err": {},
-                  "uuid": "6a7f9560-4315-4dd4-b010-9b21a96e78d9",
-                  "parentUUID": "fee8cb52-1ca8-44aa-98db-74fbabaff913",
+                  "uuid": "4fff805f-6b64-4927-8b17-ced4fda9ff43",
+                  "parentUUID": "e170311c-35cf-48ad-b22a-06ee22d447d4",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "5f2a4a41-379c-495f-a38e-cebb2df45608",
-                "6a7f9560-4315-4dd4-b010-9b21a96e78d9"
+                "8849d350-e9a2-4881-be5a-d27f2646f8c1",
+                "4fff805f-6b64-4927-8b17-ced4fda9ff43"
               ],
               "failures": [],
               "pending": [],
               "skipped": [],
-              "duration": 25,
+              "duration": 42,
               "root": false,
               "rootEmpty": false,
               "_timeout": 20000
@@ -190,7 +190,7 @@
     },
     "marge": {
       "options": {
-        "reportDir": "./reports",
+        "reportDir": "reports",
         "reportFilename": "report"
       },
       "version": "6.3.2"
