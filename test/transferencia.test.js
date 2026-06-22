@@ -1,59 +1,34 @@
 const request = require('supertest');
 const { expect } = require('chai');
 require('dotenv').config();
+const { autenticar } = require('../helpers/autentication');
+const { postTransferencia } = require('../fixtures/postTransferencia');
+const { postLogin } = require('../fixtures/postLogin');
+
+const api = () => request(process.env.BASE_URL);
 
 describe('Transferencias', () => {
+  let token;
+
+  beforeEach(async () => {
+    token = await autenticar(postLogin('julio.lima', '123456'));
+  });
+
+  const transferir = (valor) =>
+    api()
+      .post('/transferencias')
+      .set('Authorization', `Bearer ${token}`)
+      .send(postTransferencia(valor));
+
   describe('POST /transferencias', () => {
     it('Deve retornar sucesso com 201 quando o valor da transferencia for igual ou acima de R$ 10,00.', async () => {
-      // Capturar o token de autenticação do usuário logado
-      const responseLogin = await request(process.env.BASE_URL)
-        .post('/login')
-        .set('Content-Type', 'application/json')
-        .send({
-          username: 'julio.lima',
-          senha: '123456',
-        });
-
-      const token = responseLogin.body.token;
-
-      const response = await request(process.env.BASE_URL)
-        .post('/transferencias')
-        .set('Content-Type', 'application/json')
-        .set('Authorization', `Bearer ${token}`) // Adiciona o token de autenticação no cabeçalho
-        .send({
-          contaOrigem: 1,
-          contaDestino: 2,
-          valor: 11,
-          token: '',
-        });
-
-      expect(response.status).to.equal(201);
+      const res = await transferir(11);
+      expect(res.status).to.equal(201);
     });
 
     it('Deve retornar falha com 422 quando o valor da transferencia for abaixo de R$ 10,00.', async () => {
-      // Capturar o token de autenticação do usuário logado
-      const responseLogin = await request(process.env.BASE_URL)
-        .post('/login')
-        .set('Content-Type', 'application/json')
-        .send({
-          username: 'julio.lima',
-          senha: '123456',
-        });
-
-      const token = responseLogin.body.token;
-
-      const response = await request(process.env.BASE_URL)
-        .post('/transferencias')
-        .set('Content-Type', 'application/json')
-        .set('Authorization', `Bearer ${token}`) // Adiciona o token de autenticação no cabeçalho
-        .send({
-          contaOrigem: 1,
-          contaDestino: 2,
-          valor: 7,
-          token: '',
-        });
-
-      expect(response.status).to.equal(422);
+      const res = await transferir(7);
+      expect(res.status).to.equal(422);
     });
   });
 });
