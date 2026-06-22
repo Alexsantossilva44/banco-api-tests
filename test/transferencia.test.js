@@ -35,10 +35,28 @@ describe('Transferencias', () => {
   describe('GET /transferencias/{id}', () => {
     it('Deve retornar sucesso com 200 e os detalhes de uma transferencia específica no banco de dados, quando o id for válido.', async () => {
       const res = await api()
-        .get('/transferencias/1')
+        .get('/transferencias/18')
         .set('Authorization', `Bearer ${token}`);
       expect(res.status).to.equal(200);
-      expect(res.body).to.be.an('array');
+      expect(res.body).to.be.an('object');
+      expect(res.body.conta_origem_id).to.equal(1);
+      expect(res.body.conta_destino_id).to.equal(2);
+      expect(res.body.valor).to.equal('11.00');
+    });
+  });
+
+  describe('GET /transferencias', () => {
+    it('Deve retornar retornar 10 elementos na paginação quando informar limite de 10 registros.', async () => {
+      const res = await api()
+        .get('/transferencias')
+        .set('Authorization', `Bearer ${token}`);
+      expect(res.status).to.equal(200);
+      expect(res.body.limit).to.equal(10);
+      expect(res.body.transferencias).to.have.lengthOf(10);
+      expect(res.body.transferencias).to.be.an('array');
+      expect(res.body.transferencias.length).to.equal(10);
+
+      console.log('Quantidade de transferencias retornadas: ', res.body);
     });
   });
 });

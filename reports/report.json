@@ -1,14 +1,14 @@
 {
   "stats": {
-    "suites": 4,
-    "tests": 3,
-    "passes": 3,
+    "suites": 6,
+    "tests": 5,
+    "passes": 5,
     "pending": 0,
     "failures": 0,
-    "start": "2026-06-22T13:42:12.494Z",
-    "end": "2026-06-22T13:42:12.561Z",
-    "duration": 67,
-    "testsRegistered": 3,
+    "start": "2026-06-22T15:40:48.283Z",
+    "end": "2026-06-22T15:40:48.374Z",
+    "duration": 91,
+    "testsRegistered": 5,
     "passPercent": 100,
     "pendingPercent": 0,
     "other": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "950d2c94-c888-4ae8-9a4a-02681c7864b0",
+      "uuid": "aea42ac7-5677-4db8-8081-0d4683385b7e",
       "title": "",
       "fullFile": "",
       "file": "",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "1d1a2097-caee-4fb8-b55f-d525322a835a",
+          "uuid": "4a09ff92-1c0d-4308-96e6-4c17a9e859e5",
           "title": "Login",
           "fullFile": "C:\\QAx\\JuliodeLima\\Projetos\\banco-api-tests\\test\\login.test.js",
           "file": "\\test\\login.test.js",
@@ -36,7 +36,7 @@
           "tests": [],
           "suites": [
             {
-              "uuid": "68419020-f901-4d70-8449-9bc608a6058d",
+              "uuid": "3ccb4486-308b-4e45-8c88-a384c4484d21",
               "title": "POST /login",
               "fullFile": "C:\\QAx\\JuliodeLima\\Projetos\\banco-api-tests\\test\\login.test.js",
               "file": "\\test\\login.test.js",
@@ -47,7 +47,7 @@
                   "title": "Deve autenticar o usuário com credenciais válidas",
                   "fullTitle": "Login POST /login Deve autenticar o usuário com credenciais válidas",
                   "timedOut": false,
-                  "duration": 32,
+                  "duration": 29,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -56,20 +56,20 @@
                   "context": null,
                   "code": "const response = await request(process.env.BASE_URL)\n  .post('/login')\n  .set('Content-Type', 'application/json')\n  .send({ username: 'julio.lima', senha: '123456' });\n// Test implementation\n//console.log('Response Body:', response.body); // Log the response body for debugging\n//console.log('Response Status:', response.status); // Log the response status for debugging\nexpect(response.status).to.equal(200);\nexpect(response.body.token).to.be.a('string');",
                   "err": {},
-                  "uuid": "a62ee1c2-c415-4106-a7a9-636f79689404",
-                  "parentUUID": "68419020-f901-4d70-8449-9bc608a6058d",
+                  "uuid": "937a9b8c-6937-4626-aa8b-0f49548d19a8",
+                  "parentUUID": "3ccb4486-308b-4e45-8c88-a384c4484d21",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "a62ee1c2-c415-4106-a7a9-636f79689404"
+                "937a9b8c-6937-4626-aa8b-0f49548d19a8"
               ],
               "failures": [],
               "pending": [],
               "skipped": [],
-              "duration": 32,
+              "duration": 29,
               "root": false,
               "rootEmpty": false,
               "_timeout": 20000
@@ -85,7 +85,7 @@
           "_timeout": 20000
         },
         {
-          "uuid": "c1ff559b-6a1b-4b36-9495-11d85af46201",
+          "uuid": "5323ffb7-9506-457d-bded-e87b9c495cbe",
           "title": "Transferencias",
           "fullFile": "C:\\QAx\\JuliodeLima\\Projetos\\banco-api-tests\\test\\transferencia.test.js",
           "file": "\\test\\transferencia.test.js",
@@ -103,8 +103,8 @@
               "context": null,
               "code": "token = await autenticar(postLogin('julio.lima', '123456'));",
               "err": {},
-              "uuid": "450fa755-6508-44da-9736-208e8ea28dae",
-              "parentUUID": "c1ff559b-6a1b-4b36-9495-11d85af46201",
+              "uuid": "4e2d616d-e1ba-410e-ac09-a15814d657cb",
+              "parentUUID": "5323ffb7-9506-457d-bded-e87b9c495cbe",
               "isHook": true,
               "skipped": false
             }
@@ -113,7 +113,7 @@
           "tests": [],
           "suites": [
             {
-              "uuid": "785c4012-91c7-4d63-b390-ec1415048a43",
+              "uuid": "e6272af3-b6e3-44b0-8c1d-9bd41fe1c179",
               "title": "POST /transferencias",
               "fullFile": "C:\\QAx\\JuliodeLima\\Projetos\\banco-api-tests\\test\\transferencia.test.js",
               "file": "\\test\\transferencia.test.js",
@@ -124,7 +124,7 @@
                   "title": "Deve retornar sucesso com 201 quando o valor da transferencia for igual ou acima de R$ 10,00.",
                   "fullTitle": "Transferencias POST /transferencias Deve retornar sucesso com 201 quando o valor da transferencia for igual ou acima de R$ 10,00.",
                   "timedOut": false,
-                  "duration": 13,
+                  "duration": 12,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -133,8 +133,8 @@
                   "context": null,
                   "code": "const res = await transferir(11);\nexpect(res.status).to.equal(201);",
                   "err": {},
-                  "uuid": "039c8c29-891d-4cbe-bb85-c02b82612d21",
-                  "parentUUID": "785c4012-91c7-4d63-b390-ec1415048a43",
+                  "uuid": "d2079957-da21-4530-a0ad-68602c58f707",
+                  "parentUUID": "e6272af3-b6e3-44b0-8c1d-9bd41fe1c179",
                   "isHook": false,
                   "skipped": false
                 },
@@ -151,21 +151,99 @@
                   "context": null,
                   "code": "const res = await transferir(7);\nexpect(res.status).to.equal(422);",
                   "err": {},
-                  "uuid": "4e15e61b-0762-4f9c-8bde-2eedf9539bf7",
-                  "parentUUID": "785c4012-91c7-4d63-b390-ec1415048a43",
+                  "uuid": "97990c08-8519-47ae-b824-9c879929c284",
+                  "parentUUID": "e6272af3-b6e3-44b0-8c1d-9bd41fe1c179",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "039c8c29-891d-4cbe-bb85-c02b82612d21",
-                "4e15e61b-0762-4f9c-8bde-2eedf9539bf7"
+                "d2079957-da21-4530-a0ad-68602c58f707",
+                "97990c08-8519-47ae-b824-9c879929c284"
               ],
               "failures": [],
               "pending": [],
               "skipped": [],
-              "duration": 18,
+              "duration": 17,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 20000
+            },
+            {
+              "uuid": "ec572a35-2925-47ab-8e57-a9fd5923022a",
+              "title": "GET /transferencias/{id}",
+              "fullFile": "C:\\QAx\\JuliodeLima\\Projetos\\banco-api-tests\\test\\transferencia.test.js",
+              "file": "\\test\\transferencia.test.js",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Deve retornar sucesso com 200 e os detalhes de uma transferencia específica no banco de dados, quando o id for válido.",
+                  "fullTitle": "Transferencias GET /transferencias/{id} Deve retornar sucesso com 200 e os detalhes de uma transferencia específica no banco de dados, quando o id for válido.",
+                  "timedOut": false,
+                  "duration": 4,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "const res = await api()\n  .get('/transferencias/18')\n  .set('Authorization', `Bearer ${token}`);\nexpect(res.status).to.equal(200);\nexpect(res.body).to.be.an('object');\nexpect(res.body.conta_origem_id).to.equal(1);\nexpect(res.body.conta_destino_id).to.equal(2);\nexpect(res.body.valor).to.equal('11.00');",
+                  "err": {},
+                  "uuid": "ec559446-29c6-4378-8603-882a72b68187",
+                  "parentUUID": "ec572a35-2925-47ab-8e57-a9fd5923022a",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "ec559446-29c6-4378-8603-882a72b68187"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 4,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 20000
+            },
+            {
+              "uuid": "939ae719-ffa2-4ef1-a1d6-4ad71fc74ada",
+              "title": "GET /transferencias",
+              "fullFile": "C:\\QAx\\JuliodeLima\\Projetos\\banco-api-tests\\test\\transferencia.test.js",
+              "file": "\\test\\transferencia.test.js",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Deve retornar retornar 10 elementos na paginação quando informar limite de 10 registros.",
+                  "fullTitle": "Transferencias GET /transferencias Deve retornar retornar 10 elementos na paginação quando informar limite de 10 registros.",
+                  "timedOut": false,
+                  "duration": 7,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "const res = await api()\n  .get('/transferencias')\n  .set('Authorization', `Bearer ${token}`);\nexpect(res.status).to.equal(200);\nexpect(res.body.limit).to.equal(10);\nexpect(res.body.transferencias).to.have.lengthOf(10);\nexpect(res.body.transferencias).to.be.an('array');\nexpect(res.body.transferencias.length).to.equal(10);\nconsole.log('Quantidade de transferencias retornadas: ', res.body);",
+                  "err": {},
+                  "uuid": "885e8a47-dc62-493c-8b66-efa08bd084b6",
+                  "parentUUID": "939ae719-ffa2-4ef1-a1d6-4ad71fc74ada",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "885e8a47-dc62-493c-8b66-efa08bd084b6"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 7,
               "root": false,
               "rootEmpty": false,
               "_timeout": 20000
