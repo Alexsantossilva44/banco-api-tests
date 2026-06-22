@@ -3,11 +3,8 @@ require('dotenv').config();
 
 const api = () => request(process.env.BASE_URL);
 
-const autenticar = async (usuario, senha) => {
-  const responseLogin = await api().post('/login').send({
-    username: usuario,
-    senha: senha,
-  });
+const autenticar = async (body) => {
+  const responseLogin = await api().post('/login').send(body);
 
   return responseLogin.body.token;
 };

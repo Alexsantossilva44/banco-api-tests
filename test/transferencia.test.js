@@ -2,6 +2,8 @@ const request = require('supertest');
 const { expect } = require('chai');
 require('dotenv').config();
 const { autenticar } = require('../helpers/autentication');
+const { postTransferencia } = require('../fixtures/postTransferencia');
+const { postLogin } = require('../fixtures/postLogin');
 
 const api = () => request(process.env.BASE_URL);
 
@@ -9,16 +11,14 @@ describe('Transferencias', () => {
   let token;
 
   beforeEach(async () => {
-    token = await autenticar('julio.lima', '123456');
+    token = await autenticar(postLogin('julio.lima', '123456'));
   });
 
   const transferir = (valor) =>
-    api().post('/transferencias').set('Authorization', `Bearer ${token}`).send({
-      contaOrigem: 1,
-      contaDestino: 2,
-      valor: valor,
-      token: '',
-    });
+    api()
+      .post('/transferencias')
+      .set('Authorization', `Bearer ${token}`)
+      .send(postTransferencia(valor));
 
   describe('POST /transferencias', () => {
     it('Deve retornar sucesso com 201 quando o valor da transferencia for igual ou acima de R$ 10,00.', async () => {
