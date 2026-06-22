@@ -1,30 +1,9 @@
 {
   "name": "banco-api-tests",
   "version": "1.0.0",
-  "lockfileVersion": 1,
-  "requires": true,
-  "packages": {
-    "": {
-      "name": "banco-api-tests",
-      "version": "1.0.0",
-      "main": "index.js",
-      "scripts": {
-        "test": "mocha ./test/**/*.test.js --reporter mochawesome"
-      },
-      "keywords": [],
-      "author": "",
-      "license": "ISC",
-      "type": "commonjs",
-      "dependencies": {
-        "chai": "^6.2.2",
-        "mocha": "^11.7.6",
-        "supertest": "^7.2.2"
-      }
-    }
-  },
   "main": "index.js",
   "scripts": {
-    "test": "mocha ./test/**/*.test.js --timeout 20000 --reporter mochawesome --reporter-options reportDir=reports,reportFilename=report"
+    "test": "mocha ./test/**/*.test.js --timeout 20000 --reporter mochawesome --reporter-options quiet=true"
   },
   "keywords": [],
   "author": "",
@@ -34,7 +13,6 @@
     "chai": "^6.2.2",
     "dotenv": "^17.4.2",
     "mocha": "^11.7.6",
-    "mochawesome": "^7.1.4",
     "supertest": "^7.2.2"
   },
   "devDependencies": {

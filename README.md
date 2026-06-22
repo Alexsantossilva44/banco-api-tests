@@ -4,7 +4,7 @@ Projeto de automação de testes de API Rest para o sistema bancário [banco-api
 
 ## Objetivo
 
-Validar os endpoints da API Rest do projeto banco-api, cobrindo cenários de autenticação e transferências financeiras, contribuindo que as regras de negócio e os contratos de resposta estejam corretos.
+Validar os endpoints da API Rest do projeto banco-api, cobrindo cenários de autenticação e transferências financeiras, garantindo que as regras de negócio e os contratos de resposta estejam corretos.
 
 ## Stack utilizada
 
