@@ -1,9 +1,9 @@
 const request = require('supertest');
 const { expect } = require('chai');
+require('dotenv').config();
 const { autenticar } = require('../helpers/autentication');
 const { postTransferencia } = require('../fixtures/postTransferencia');
 const { postLogin } = require('../fixtures/postLogin');
-require('dotenv').config();
 
 const api = () => request(process.env.BASE_URL);
 
